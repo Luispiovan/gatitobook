@@ -1,0 +1,81 @@
+<h4 class="text-center">Resgistre-se e mostre seu Pet ao mundo!</h4>
+
+<form class="form mt-4" [formGroup]="novoUsuarioForm" (submit)="cadastrar()">
+  <div class="form-group">
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Nome Completo"
+      formControlName="fullName"
+    />
+    <app-mensagem
+      *ngIf="
+        novoUsuarioForm.get('fullName')?.errors &&
+        novoUsuarioForm.get('fullName')?.touched
+      "
+      mensagemAqui="Nome incorreto"
+    ></app-mensagem>
+  </div>
+  <div class="form-group">
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Usuario"
+      formControlName="userName"
+    />
+    <app-mensagem
+      *ngIf="
+        novoUsuarioForm.get('userName')?.errors?.minusculo &&
+        novoUsuarioForm.get('userName')?.touched
+      "
+      mensagemAqui="Usuário deve ser em letra minúscula"
+    ></app-mensagem>
+    <app-mensagem
+      *ngIf="novoUsuarioForm.get('userName')?.errors?.usuarioExistente"
+      mensagemAqui="Usuário já existe"
+    ></app-mensagem>
+  </div>
+  <div class="form-group">
+    <input
+      class="form-control"
+      type="text"
+      placeholder="E-mail"
+      formControlName="email"
+    />
+    <app-mensagem
+      *ngIf="
+        novoUsuarioForm.get('email')?.errors?.required &&
+        novoUsuarioForm.get('email')?.touched
+      "
+      mensagemAqui="E-mail obrigatório!"
+    ></app-mensagem>
+    <app-mensagem
+      *ngIf="
+        novoUsuarioForm.get('email')?.errors?.email &&
+        novoUsuarioForm.get('email')?.touched
+      "
+      mensagemAqui="E-mail no formato incorreto"
+    ></app-mensagem>
+  </div>
+  <div class="form-group">
+    <input
+      class="form-control"
+      type="password"
+      placeholder="Senha"
+      formControlName="password"
+    />
+    <app-mensagem
+      *ngIf="novoUsuarioForm.errors?.senhaIgualUsuario"
+      mensagem="Senha deve ser diferente do usuário"
+    ></app-mensagem>
+  </div>
+  <button class="btn btn-primary btn-block" style="width: 100%">
+    Cadastrar
+  </button>
+</form>
+<br />
+<div class="text-center">
+  <p>
+    Já é um usuário? <a [routerLink]="['']">Entre com seu usuário e senha!</a>
+  </p>
+</div>
