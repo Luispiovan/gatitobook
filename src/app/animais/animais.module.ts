@@ -9,8 +9,8 @@ import { RouterModule } from '@angular/router';
 import { GradeFotosAnimaisComponent } from './grade-fotos-animais/grade-fotos-animais.component';
 import { DetalheAnimalComponent } from './detalhe-animal/detalhe-animal.component';
 import { ComentariosComponent } from './detalhe-animal/comentarios/comentarios.component';
-import { MensagemModule } from '../componentes/mensagem/mensagem.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { NovoAnimalComponent } from './novo-animal/novo-animal.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +19,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     GradeFotosAnimaisComponent,
     DetalheAnimalComponent,
     ComentariosComponent,
+    NovoAnimalComponent,
   ],
   imports: [
     CommonModule,
     AnimaisRoutingModule,
     CartaoModule,
     RouterModule,
-    MensagemModule,
-    ReactiveFormsModule,
+    SharedModule
   ],
 })
 export class AnimaisModule {}

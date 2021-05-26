@@ -8,13 +8,13 @@ import { Animais } from '../animais';
   styleUrls: ['./lista-animais.component.css'],
 })
 export class ListaAnimaisComponent implements OnInit {
-  animais$!: Animais;
+  animais!: Animais;
 
   constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      this.animais$ = this.activatedRoute.snapshot.data['animais'];
+      this.animais = this.activatedRoute.snapshot.data['animais'];
     });
   }
 }
